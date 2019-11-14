@@ -24,9 +24,9 @@ import com.weupay.common.util.StringUtils;
 import com.weupay.pay.api.protocol.AccessTokenRes;
 import com.weupay.pay.api.service.GetTokenService;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -45,30 +45,23 @@ public class MessageServiceImpl implements MessageService {
 
     private Logger logger = Logger.getLogger(MessageServiceImpl.class);
 
+    @Resource
     private FaceInfoMapper faceInfoMapper;
 
+    @Resource
     private ShopMapper shopMapper;
 
+    @Resource
     private MerchantTemplateMapper merchantsTemplateMapper;
 
+    @Resource
     private MerchantTokenMapper merchantTokenMapper;
 
+    @Resource
     private MemberMapper memberMapper;
 
+    @Resource
     private CustomerInfoMapper customerMapper;
-
-    @Autowired
-    public MessageServiceImpl(FaceInfoMapper faceInfoMapper, ShopMapper shopMapper,
-                              MerchantTemplateMapper merchantsTemplateMapper, MerchantTokenMapper merchantTokenMapper,
-                              MemberMapper memberMapper, CustomerInfoMapper customerMapper) {
-        this.faceInfoMapper = faceInfoMapper;
-        this.shopMapper = shopMapper;
-        this.memberMapper = memberMapper;
-        this.merchantTokenMapper = merchantTokenMapper;
-        this.merchantsTemplateMapper = merchantsTemplateMapper;
-        this.customerMapper = customerMapper;
-
-    }
 
 
     @Override

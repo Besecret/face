@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wandingkeji.yueke.callback.mapper.CustomerInfoMapper">
+
+	<select id="queryCustomerByCustomerId" resultType="cn.wandingkeji.yueke.callback.model.EventModel" parameterType="cn.wandingkeji.yueke.callback.model.EventModel">
+
+		SELECT * FROM yk_customer_info WHERE customer_id =  #{event.customerId,jdbcType=INTEGER};
+	</select>
+
+
+
+    <insert id="saveCustomerInfo" parameterType="cn.wandingkeji.yueke.callback.model.EventModel" useGeneratedKeys="true" keyProperty="event.id">
+		insert into yk_customer_info
+		(
+			customer_id, shop_id,face_id,person_id,device_mac_address,original_face,capture_time,visit_nums
+		)
+		values (
+		#{event.customerId,jdbcType=INTEGER},
+		#{event.shopId,jdbcType=INTEGER},
+		#{event.faceId,jdbcType=VARCHAR},
+		#{event.personId,jdbcType=VARCHAR},
+		#{event.deviceMacAddres,jdbcType=VARCHAR},
+		#{event.originalFace,jdbcType=VARCHAR},
+		#{event.captureTime,jdbcType=DATE},
+		1
+		);
+	</insert>
+
+
+
+    <insert id="updateCustomerInfoById" parameterType="cn.wandingkeji.yueke.callback.model.EventModel">
+
+		update  yk_customer_info
+		set  capture_time = #{event.captureTime,jdbcType=DATE},
+        visit_nums = visit_nums + 1
+        where customer_id = #{event.customerId,jdbcType=INTEGER};
+
+	</insert>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wandingkeji.yueke.company.mapper.CompanyMapper">
+
+	<resultMap type="cn.wandingkeji.yueke.company.model.Company" id="BaseResultMap">
+		<id column="id" property="id"/>
+		<result column="phone" property="phone" />
+		<result column="company_password" property="password" />
+		<result column="member_group" property="group"/>
+		<result column="merchant_id" property="merchantId"/>
+	</resultMap> 
+ 
+	<select id="selectCompanyByMid" resultMap="BaseResultMap" parameterType="java.lang.String">
+	
+		select 
+			id,phone,company_password,member_group,merchant_id
+		from wd_company
+			where merchant_id = #{id}
+	
+	</select>
+
+
+</mapper>

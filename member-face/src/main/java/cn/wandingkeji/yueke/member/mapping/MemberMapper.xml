@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wandingkeji.yueke.member.mapper.MemberMapper">
+
+	<resultMap type="cn.wandingkeji.yueke.member.model.Member" id="BaseResultMap">
+		<id column="id" property="id"/>
+		<result column="mid" property="mid" />
+		<result column="card_id" property="cardId"/>
+		<result column="card_no" property="card_no"/>
+		<result column="card_barcode" property="cardBarcode"/>
+		<result column="bonus" property="bonus" />
+		<result column="balance" property="balance"/>
+		<result column="all_paymoney" property="allPaymoney"/>
+		<result column="type" property="type"/>
+		<result column="name" property="name" />
+		<result column="phone" property="phone"/>
+		<result column="wx_name" property="wxName"/>
+		<result column="wx_pic" property="wxPic" />
+		<result column="sex" property="sex"/>
+		<result column="email" property="email" />
+		<result column="address" property="address"/>
+		<result column="addtime" property="addtime"/>
+		<result column="expenses_total" property="expensesTotal" />
+		<result column="education" property="education" />
+		<result column="industry" property="industry"/>
+		<result column="year" property="year" />
+		<result column="month" property="month"/>
+		<result column="day" property="day"/>
+		<result column="salary" property="salary" />
+		<result column="likes" property="likes" />
+		<result column="grade_id" property="gradeId"/>
+		<result column="grade_name" property="gradeName" />
+		<result column="msg_nub" property="msg_nub"/>
+		<result column="openid" property="openid"/>
+		<result column="store_id" property="storeId" />
+		<result column="store_name" property="storeName" />
+		<result column="province_code" property="provinceCode"/>
+		<result column="city_code" property="cityCode" />
+		<result column="update_paytime" property="updatePaytime"/>
+		<result column="pay_nub" property="payNub"/>
+		<result column="tags" property="tags" />
+		<result column="pw" property="pw" />
+		<result column="status" property="status" />
+		<result column="outerid" property="outerid"/>
+		<result column="idcard" property="idcard" />
+		<result column="career" property="career"/>
+		<result column="has_active" property="hasActive"/>
+		<result column="level" property="level" />
+		<result column="level_name" property="levelName"/>
+		<result column="creat_time" property="creatTime"/>
+		<result column="password" property="password" />
+		<result column="salt" property="salt"/>
+		<result column="loc_status" property="locStatus"/>
+		<result column="person_id" property="personId" />
+		<result column="mini_appid" property="miniAppid"/>
+		<result column="mini_openid" property="miniApenid" />
+	</resultMap>
+	
+	<!-- 根据ID查询open名字 -->
+	<select id="selectMemberById" resultMap="BaseResultMap" parameterType="java.lang.String">
+	
+		select 
+			id,phone,name,openid,sex,year,month,day
+		from wd_member
+		where id=#{id}
+	
+	</select>
+
+	<!-- 根据ID查询open名字 -->
+	<select id="selectMemberByCustomerId"  resultType="cn.wandingkeji.yueke.member.model.MemberMesTemplate" parameterType="java.lang.String">
+
+		SELECT
+			wd_member_face.member_id memberId,
+			wd_mem_balance.account_name memberName,
+			wd_face_info.open_id openId,
+			wd_mem_balance.actual_balance balance,
+			wd_mem_balance.pay_store_id storeIdLatest,
+			store.store_name storeNameLatest,
+			wd_mem_balance.pay_time_latest payTimeLatest,
+			wd_mem_balance.`level` levelId ,
+			wd_card_level.level_name levelName
+		FROM
+			wd_member_face,
+			wd_face_info,
+			wd_mem_balance
+			LEFT JOIN wd_card_level ON wd_mem_balance.`level` = wd_card_level.id
+			LEFT JOIN store ON wd_mem_balance.pay_store_id = store.id
+		WHERE
+			wd_face_info.id = wd_member_face.face_id
+			AND wd_member_face.member_id = wd_mem_balance.member_id
+			AND wd_face_info.customer_id= #{customerId};
+
+	</select>
+
+
+
+	
+</mapper>

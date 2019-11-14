@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wandingkeji.yueke.member.mapper.MemberFaceMapper">
+
+	<!-- 插入会员信息与人脸信息关联 -->
+	<insert id="insert">
+		insert into wd_member_face values(
+			#{id},#{memberId},#{faceId}
+		)
+	</insert>
+
+	<!-- 统计是否注册过人脸信息 -->
+	<select id="selectMemberCount" resultType="java.lang.Integer" parameterType="java.lang.String" >
+		select count(*) from wd_member_face where member_id=#{id}
+	</select>
+
+</mapper>

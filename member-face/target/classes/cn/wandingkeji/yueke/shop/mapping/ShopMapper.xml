@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wandingkeji.yueke.shop.mapper.ShopMapper">
+
+	<resultMap type="cn.wandingkeji.yueke.shop.model.Shop" id="BaseResultMap">
+		<id column="id" property="id"/>
+		<result column="company_id" property="companyId" />
+		<result column="store_id" property="storeId"/>
+		<result column="shop_id" property="shopId"/>
+		<result column="merchant_id" property="merchantId"/>
+		<result column="merchant_token_id" property="merchantTokenId"/>
+	</resultMap>
+
+	
+	<select id="selectShopByShopId" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+			id,company_id,store_id,shop_id,merchant_id,merchant_token_id
+		from wd_shop where shop_id = #{id}
+	
+	</select>
+
+	<select id="selectStoreNameByStoreId" resultType="java.lang.String" parameterType="java.lang.Integer">
+		SELECT
+			store_name
+		FROM
+			store
+		WHERE
+			id = #{id}
+	</select>
+
+
+</mapper>

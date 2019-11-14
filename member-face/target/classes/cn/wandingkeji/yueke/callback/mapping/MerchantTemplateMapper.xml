@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wandingkeji.yueke.callback.mapper.MerchantTemplateMapper">
+
+	<resultMap type="cn.wandingkeji.yueke.callback.model.MerchantTemplate" id="BaseResultMap">
+		<id column="id" property="id"/>
+		<result column="company_id" property="companyId" />
+		<result column="template_id" property="templateId"/>
+		<result column="third_template_id" property="thirdTemplateId"/>
+		<result column="type" property="type"/>
+		
+		<association property="template" javaType="cn.wandingkeji.yueke.callback.model.Template">
+			<id column="id" property="id"/>
+			<result column="template" property="template" />
+		</association>
+		
+	</resultMap>
+	
+	<!-- 根据公司ID查询模板  -->
+	<select id="selectMerchantTemplateByCompanyId" resultMap="BaseResultMap" parameterType="java.lang.String">
+	
+		select 
+			m.id,m.company_id,m.template_id,m.third_template_id,t.template,m.type
+		from wd_merchants_template m 
+			left join wd_template t 
+			on m.template_id = t.id
+		where m.company_id = #{id}
+	
+	</select>	
+
+	
+
+</mapper>

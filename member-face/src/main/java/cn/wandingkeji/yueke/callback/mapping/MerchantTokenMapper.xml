@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wandingkeji.yueke.callback.mapper.MerchantTokenMapper">
+
+	<resultMap type="cn.wandingkeji.yueke.company.model.MerchantToken" id="BaseResultMap">
+		<id column="id" property="id"/>
+		<result column="mid" property="merchantsId" />
+		<result column="token_id" property="tokenId"/>
+		<result column="token_type" property="tokenType"/>
+		<result column="create_time" property="createTime"/>
+	</resultMap>
+	
+	<select id="selectMerchantToken" resultMap="BaseResultMap" parameterType="java.lang.String">
+		
+		select 
+			id,mid,token_id,token_type
+		from mer_token 
+		where mid = #{mid} and token_type = #{type}
+		
+	</select>
+
+</mapper>

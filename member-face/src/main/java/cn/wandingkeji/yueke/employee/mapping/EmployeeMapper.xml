@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wandingkeji.yueke.employee.mapper.EmployeeMapper">
+
+	<resultMap type="cn.wandingkeji.yueke.employee.model.Employee" id="BaseResultMap">
+		<id column="id" property="id"/>
+		<result column="shop_id" property="shopId" />
+		<result column="open_id" property="openId"/>
+		<result column="customer_id" property="customerId"/>
+	</resultMap>
+
+	<!-- 查询雇员列表 -->
+	<select id="selectEmployeeList" resultMap="BaseResultMap">
+	
+		select 
+			id,shop_id,open_id,customer_id
+		from wd_employee where shop_id=#{id}
+	
+	</select>
+	
+	<!-- 插入单条 -->
+	<insert id="insert">
+		insert into wd_employee (id,shop_id,open_id) values (#{id},#{shopId},#{openId})
+	</insert>
+	
+	<!-- 查询雇员  -->
+	<select id="selectEmp" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select id,shop_id,open_id,customer_id from wd_employee WHERE open_id=#{id}
+	</select>
+
+</mapper>

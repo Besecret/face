@@ -1,33 +1,70 @@
-/**  
- * 西安万鼎网络科技有限公司, http://www.wandingkeji.cn/
- * @Title:  FaceInfo.java   
- * @Package cn.wandingkeji.yueke.member.model   
- * @Description:    TODO
- * @author: 薛展峰    
- * @date:   2019年6月24日 上午9:36:11   
- * @version V1.0 
- */
+
 package cn.wandingkeji.yueke.member.model;
 
 import lombok.Data;
 import lombok.ToString;
 
-/**   
- * 西安万鼎网络科技有限公司, http://www.wandingkeji.cn/
- * @ClassName:  FaceInfo   
- * @Description:人脸信息  
- * @author: 薛展峰
- * @date:   2019年6月24日 上午9:36:11   
+/**
+ * 人脸信息 vo
+ * @author  w.d.k.j
  */
 @Data
 @ToString
 public class FaceInfo {
-	
+
+
+	/**
+	 * id
+	 */
 	private String id;
+
+
+	/**
+	 * person id
+	 */
 	private String personId;
+
+
+	/**
+	 *  顾客id
+	 */
 	private String customerId;
-	private String memberGroupId;
+
+
+	/**
+	 * 人脸地址
+	 */
 	private String faceUrl;
+
+	/**
+	 * opend id
+	 */
 	private String openId;
+
+
+	/**
+	 * 组id
+	 */
 	private String groupId;
+
+	/**
+	 * 名称
+	 */
+	private  String  name;
+
+	/**
+	 * 手机号
+	 */
+	private  String	 phone;
+
+	/**
+	 * 性别
+	 */
+	private  Integer gender;
+
+	/**
+	 * 生日
+	 */
+	private  String	 birthday;
+
 }

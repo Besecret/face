@@ -32,7 +32,7 @@ public interface CompanyService {
 	 * @return: Admin      
 	 * @throws   
 	 */
-	Company login(String mid) throws Exception;
+	Company login(String mid);
 
 	/**   
 	 * @Title: queryMemberGroup   

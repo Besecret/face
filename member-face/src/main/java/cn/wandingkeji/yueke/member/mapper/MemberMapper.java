@@ -20,7 +20,7 @@ public interface MemberMapper {
 	 * @param id 主键
 	 * @return 会员
 	 */
-	Member selectMemberById(String id);
+	Member selectMemberById(int id);
 
 	/**
 	 *  customer id 查询会员

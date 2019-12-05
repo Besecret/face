@@ -26,7 +26,7 @@ public class Constant {
     /**
      * 全局 失败状态码
      */
-    public final static String ERROR_CODE = "10000";
+    public final static String ERROR_CODE = "100000";
 
     /**
      * 成功标识
@@ -50,5 +50,12 @@ public class Constant {
      *
      */
     public final static String WX_STATUS_MSG = "errmsg";
+
+
+    /**
+     * 微信官方返回状态信息
+     *
+     */
+    public final static String YK_ERROR_CODE = "errors";
 
 }

@@ -22,7 +22,7 @@ import lombok.Data;
 public class MemberAndFace {
 	
 	private String id;
-	private String memberId;
+	private Integer memberId;
 	private String faceId;
 
 }

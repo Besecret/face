@@ -30,12 +30,12 @@ import cn.wandingkeji.yueke.company.service.CompanyService;
 import cn.wandingkeji.yueke.member.model.Member;
 import cn.wandingkeji.yueke.member.service.MemberManagerService;
 
-/**   
- * 西安万鼎网络科技有限公司, http://www.wandingkeji.cn/
- * @ClassName:  MemeberManagerController   
- * @Description:TODO   
- * @author: 薛展峰
- * @date:   2019年6月21日 上午9:05:08   
+import javax.annotation.Resource;
+
+/**
+ * 人脸会员注册
+ * @author w.d
+ *
  */
 @RestController
 @RequestMapping("/member")
@@ -43,10 +43,10 @@ public class MemberManagerController {
 	
 	private final static Logger logger = Logger.getLogger(MemberManagerController.class);
 	
-	@Autowired
+	@Resource
 	private MemberManagerService memberManagerService;
-	
-	@Autowired
+
+	@Resource
 	private CompanyService companyService;
 	
 	/**
@@ -62,24 +62,15 @@ public class MemberManagerController {
 	public ReturnData registered(@RequestParam("avatars[]") MultipartFile file, Member member, @RequestParam("mid") String mid) {
 	
 		logger.info("入参： " + member + ",商户ID:" + mid);
-		Company company = null;
-		try {
-			//登录
-			company = companyService.login(mid);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			logger.error("获取公司信息失败 ！");
-			logger.error(ExceptionUtils.getMessage(e));
-			return ConstantUtils.printErrorMessage();
-		}
-		
+		Company company = companyService.login(mid);
+
 		ReturnData memberJSON = null;
 		try {
 			//注册会员
 			memberJSON = memberManagerService.registeredMember(member, company, file);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			logger.error(ExceptionUtils.getMessage(e));
 			return ConstantUtils.printErrorMessage();
 		}

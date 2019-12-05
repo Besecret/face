@@ -33,7 +33,7 @@ public interface FaceInfoMapper {
 	 * @return: void      
 	 * @throws   
 	 */
-	Integer insert(FaceInfo faceInfo) throws Exception;
+	Integer insert(FaceInfo faceInfo) ;
 
 	/**   
 	 * @Title: update   
@@ -42,7 +42,7 @@ public interface FaceInfoMapper {
 	 * @return: void      
 	 * @throws   
 	 */
-	Integer update(FaceInfo faceInfo) throws Exception;
+	Integer update(FaceInfo faceInfo) ;
 
 	/**
 	 * @Title: selectMemberFaceInfo   
@@ -52,7 +52,7 @@ public interface FaceInfoMapper {
 	 * @return: FaceInfo      
 	 * @throws   
 	 */
-	FaceInfo selectMemberFaceInfo(String id) throws Exception;
+	FaceInfo selectMemberFaceInfo(Integer id);
 
 	/**   
 	 * @Title: selectMemberByCustomerId   

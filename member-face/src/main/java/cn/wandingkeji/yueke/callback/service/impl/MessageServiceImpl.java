@@ -101,7 +101,6 @@ public class MessageServiceImpl implements MessageService {
                     return ConstantUtils.printErrorMessage(" 推送顾客信息失败! ");
                 }
 
-
                 //雇员发送 TBD 此处功能待优化
                 logger.info("-----------开始发送消息给雇员 Start ! -------------");
                 String storeId = shop.getStoreId();

@@ -10,7 +10,7 @@
 	</insert>
 
 	<!-- 统计是否注册过人脸信息 -->
-	<select id="selectMemberCount" resultType="java.lang.Integer" parameterType="java.lang.String" >
+	<select id="countMemberById" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
 		select count(*) from wd_member_face where member_id=#{id}
 	</select>
 

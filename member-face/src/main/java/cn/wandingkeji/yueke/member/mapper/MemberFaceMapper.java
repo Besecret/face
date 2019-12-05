@@ -1,45 +1,31 @@
-/**  
- * 西安万鼎网络科技有限公司, http://www.wandingkeji.cn/
- * @Title:  MemberFace.java   
- * @Package cn.wandingkeji.yueke.member.mapper   
- * @Description:    TODO
- * @author: 薛展峰    
- * @date:   2019年6月21日 下午4:42:33   
- * @version V1.0 
- */
+
 package cn.wandingkeji.yueke.member.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import cn.wandingkeji.yueke.member.model.MemberAndFace;
+import org.springframework.stereotype.Repository;
 
-/**   
- * 西安万鼎网络科技有限公司, http://www.wandingkeji.cn/
- * @ClassName:  MemberFace   
- * @Description:TODO   
- * @author: 薛展峰
- * @date:   2019年6月21日 下午4:42:33   
+/**
+ * 会员人脸 mapper
+ * @author  w.d.k.j
  */
 @Mapper
+@Repository
 public interface MemberFaceMapper {
 
-	/**   
-	 * @Title: insert   
-	 * @Description: 添加会员信息与人脸信息
-	 * @param: @param memberAndFace      
-	 * @return: void      
-	 * @throws   
+	/**
+	 * 新增人脸信息
+	 * @param memberAndFace 会员人脸信息
+	 * @return 数据库影响的行
 	 */
-	Integer insert(MemberAndFace memberAndFace) throws Exception;
+	Integer insert(MemberAndFace memberAndFace);
 
-	/**   
-	 * @Title: selectMemberCount   
-	 * @Description: TODO
-	 * @param: @param id
-	 * @param: @return      
-	 * @return: Integer      
-	 * @throws   
+	/**
+	 * 通过主键统计会员
+	 * @param id 主键
+	 * @return 个数
 	 */
-	Integer selectMemberCount(String id) throws Exception;
+	Integer countMemberById(Integer id);
 
 }

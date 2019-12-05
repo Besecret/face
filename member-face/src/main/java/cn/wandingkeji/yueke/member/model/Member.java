@@ -1,43 +1,60 @@
-/**  
- * 西安万鼎网络科技有限公司, http://www.wandingkeji.cn/
- * @Title:  Member.java   
- * @Package cn.wandingkeji.yueke.member.domain   
- * @Description:    TODO
- * @author: 薛展峰    
- * @date:   2019年6月21日 上午9:27:38   
- * @version V1.0 
- */
+
 package cn.wandingkeji.yueke.member.model;
 
 import lombok.Data;
 import lombok.ToString;
 
-/**   
- * 西安万鼎网络科技有限公司, http://www.wandingkeji.cn/
- * @ClassName:  Member   
- * @Description:TODO   
- * @author: 薛展峰
- * @date:   2019年6月21日 上午9:27:38   
+/**
+ * 会员注册 member
+ * @author w.d.k.j
  */
 @Data
 @ToString
 public class Member {
 	
-	private String id;
+	private Integer id;
+
+
 	private String personId;
+
 	private String memberGroupId;
+
+	/**
+	 * 手机
+	 */
 	private String phone;
+
+	/**
+	 * 姓名
+	 */
 	private String name;
+
+	/**
+	 * 生日
+	 */
 	private String birthday;
-	private String gender;
+
+	/**
+	 * 性别
+	 */
+	private Integer gender;
+
+	/**
+	 * 员工类型
+	 */
+	private Integer type;
+
+
+
 	private String mid;
+
 	private String cardId;
 	private String cardNo;
 	private String cardBarcode;
 	private String bonus;
 	private String balance;
 	private String allPaymoney;
-	private String type;
+
 	private String wxName;
 	private String wxPic;
 	private String sex;

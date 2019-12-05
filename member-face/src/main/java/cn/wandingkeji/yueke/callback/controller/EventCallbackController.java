@@ -28,7 +28,7 @@ import java.nio.charset.Charset;
 public class EventCallbackController {
 
     @Resource
-    private  MessageService messageSerivce;
+    private MessageService messageSerivce;
 
     @RequestMapping("/push")
     public Object pushMessage(HttpServletRequest request) throws IOException {
@@ -42,9 +42,9 @@ public class EventCallbackController {
         try {
 
             JSONObject json = JSON.parseObject(acceptJson);
-            log.info("json is :"+json);
+            log.info("json is :" + json);
             String event = json.getString("event") == null ? "" : json.getString("event");
-            log.info("event is :" +event);
+
             eventModel = JSON.parseObject(event, EventModel.class);
 
         } catch (Exception e) {
